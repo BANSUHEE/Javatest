@@ -9,7 +9,7 @@ import java.net.*;
 import java.sql.*;
 import java.util.HashMap;
 
-public class ChatClientGUI {
+public class ChatClient {
    // 소켓 통신에 필요한 변수
    private Socket socket;
    private BufferedReader reader;
@@ -49,7 +49,7 @@ public class ChatClientGUI {
    private JTextField openLoginField;
    
    // 생성자
-   public ChatClientGUI() {
+   public ChatClient() {
       // 데이터베이스 연결
       this("jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC", "root", "qwe123!@#");
       // 사용자 정보 해시맵 초기화
@@ -59,7 +59,7 @@ public class ChatClientGUI {
    }
 
 // 데이터베이스 연결 생성자
-   public ChatClientGUI(String url, String user, String pw) {
+   public ChatClient(String url, String user, String pw) {
       try {
          Class.forName("com.mysql.cj.jdbc.Driver");
          conn = DriverManager.getConnection(url, user, pw);
@@ -979,6 +979,6 @@ public class ChatClientGUI {
    }
 
    public static void main(String[] args) {
-      SwingUtilities.invokeLater(ChatClientGUI::new);
+      SwingUtilities.invokeLater(ChatClient::new);
    }
 }
